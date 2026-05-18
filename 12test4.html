@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classs XII Result by Vikram Sir</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 100%;
+      margin: auto;
+      box-sizing: border-box;
+    }
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 0;
+      font-weight: normal;
+      font-size: 16px;
+    }
+    .logo {
+      display: block;
+      margin: auto;
+      width: 100px;
+      height: auto;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .result-card {
+      margin-top: 30px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      display: none;
+      border-radius: 8px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 6px;
+    }
+    .label {
+      font-weight: bold;
+    }
+    .value {
+      padding: 4px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    td {
+      padding: 6px;
+      border: 1px solid #999;
+    }
+    .footer {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer div {
+      flex: 1;
+      min-width: 120px;
+      font-size: 14px;
+    }
+    @media print {
+      button { display: none; }
+      input, label { display: none; }
+    }
+  </style>
+</hea
+  <img src="" alt="Institute Logo" class="Math" />
+  <h1>Test Series by Vikram Sir</h1>
+  <h2>(Maths by Vikram Sir)</h2>
+
+  <div class="input-group">
+    <label for="rollNo">Enter Roll No:</label>
+    <input type="text" id="rollNo" />
+  </div>
+  <div class="input-group">
+    <label for="rollCode">Enter Roll Code:</label>
+    <input type="text" id="rollCode" />
+  </div>
+  <button onclick="searchResult()">Check Result</button>
+
+  <div class="result-card" id="resultCard">
+    <h2>Student Result</h2>
+    <div class="field"><div class="label">Name:</div><div class="value" id="name"></div></div>
+    <div class="field"><div class="label">Father's Name:</div><div class="value" id="father"></div></div>
+    <div class="field"><div class="label">Mother's Name:</div><div class="value" id="mother"></div></div>
+    <div class="field"><div class="label">Roll No:</div><div class="value" id="rno"></div></div>
+    <div class="field"><div class="label">Roll Code:</div><div class="value" id="rcode"></div></div>
+
+    <table>
+      <tr><td>Test Name</td><td id="testname"></td></tr>
+      <tr><td>Total Marks</td><td id="totalmarks"></td></tr>
+      <tr><td>Marks Obtained</td><td id="marks"></td></tr>
+      <tr><td>Percentage</td><td id="percent"></td></tr>
+      <tr><td>Rank</td><td id="rank"></td></tr>
+      <tr><td>Remarks</td><td id="remarks"></td></tr>
+    </table>
+
+    <div class="footer">
+      <div>
+        <div>Date: <span id="date"></span></div>
+        <div>Place: <span id="place"></span></div>
+      </div>
+      <div style="text-align: center;">
+        <div>Seal of Institution</div><br/>
+        <div>Signature of Teacher</div>
+      </div>
+    </div>
+
+    <button onclick="window.print()">Print Result</button>
+  </div>
+
+  <script>
+    const students = [
+{"roll_no":10138,"roll_code":25037,"name":"AKHILESH KUMAR CHOUDHARY","father":"DILIP CHOUDHARY","mother":"ILACHI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":229,"roll_code":25033,"name":"ALOK MAHATO","father":"PASHUPATI MAHATO","mother":"PALANI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":32,"percentage":"80%","rank":12,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10104,"roll_code":25033,"name":"AMAN KUMAR SHARMA","father":"VIKASH CHANDRA SHARMA","mother":"LAKSHMI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":34,"percentage":"85%","rank":9,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10122,"roll_code":25033,"name":"AMAR KUMAR","father":"SURENDRA NATH MAHTO","mother":"SITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":29,"percentage":"73%","rank":16,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10124,"roll_code":25033,"name":"ANGAD KUMAR","father":"PYARELAL BAURI","mother":"SHANTI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":28,"percentage":"70%","rank":20,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10116,"roll_code":25033,"name":"ANSHU KUMAR","father":"SANJAY SAW","mother":"RUBI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10125,"roll_code":25033,"name":"AYUSH KUMAR MODI","father":"MANCHU MODI","mother":"MANJU DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":10,"percentage":"25%","rank":41,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10145,"roll_code":25033,"name":"BANTY KUMAR SHARMA","father":"JHANDU LAL SHARMA","mother":"MANJU DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10109,"roll_code":25033,"name":"BUNTY SHARMA","father":"THAKUL DAS SHARMA","mother":"PUSHPA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10152,"roll_code":25033,"name":"DIPIKA SHARMA","father":"UDIT SHARMA","mother":"BABITA SHARMA","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10106,"roll_code":25033,"name":"DOLI KUMARI","father":"SHYAM SUNDAR MAHATO","mother":"NEERA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":37,"percentage":"93%","rank":3,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10149,"roll_code":25033,"name":"FIROZA PARWEEN","father":"KALIM ANSARI","mother":"FIRDOUSHI BIBI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10133,"roll_code":25056,"name":"GANGAN UPADHYAY","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":10,"percentage":"25%","rank":41,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10113,"roll_code":25037,"name":"GAURI KUMARI","father":"LAL MOHAN MAHATO","mother":"ANITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":33,"percentage":"83%","rank":11,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10107,"roll_code":25033,"name":"GOPAL SINGH","father":"SHUKDEO SINGH CHOUDHARY","mother":"REETA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":16,"percentage":"40%","rank":36,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10140,"roll_code":25033,"name":"HUSEN ANSARI","father":".","mother":".","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":14,"percentage":"35%","rank":37,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10134,"roll_code":25056,"name":"JISHU DUARY","father":"NARAYAN DUARY","mother":"TINA DUARY","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":28,"percentage":"70%","rank":20,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10110,"roll_code":25033,"name":"KALYANI KUMARI","father":"RAJENDRA SINGH CHOUDHARY","mother":"BALIKA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":32,"percentage":"80%","rank":12,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10132,"roll_code":25037,"name":"KARAN KUMAR MAHATO","father":"…","mother":"…","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":29,"percentage":"73%","rank":16,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10102,"roll_code":25033,"name":"KAREENA KUMARI","father":"RAJESH SHARMA","mother":"REENA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":39,"percentage":"98%","rank":1,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":220,"roll_code":25033,"name":"MANISH KUMAR","father":"GANESH CHANDRA GOPE","mother":"RITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":11,"percentage":"28%","rank":39,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":341,"roll_code":25033,"name":"MANISH KUMAR","father":"RAJESH MAHATO","mother":"SITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":28,"percentage":"70%","rank":20,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10135,"roll_code":25033,"name":"MEGHA KUMARI","father":"MUKESH KUMAR MAHTO","mother":"RANI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10108,"roll_code":25033,"name":"MRITUNJAY MAHATHA","father":"SOMNATH MAHATHA","mother":"REENA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":35,"percentage":"88%","rank":6,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":344,"roll_code":25033,"name":"NIKHIL KUMAR MAHATO","father":"RAJ KUMAR MAHATO","mother":"SANKA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":24,"percentage":"60%","rank":26,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10111,"roll_code":25033,"name":"NISHA KUMARI","father":"CHHUTU LAL GORAIN","mother":"CHANDANA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":29,"percentage":"73%","rank":16,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10139,"roll_code":25037,"name":"NITESH KUMAR CHOUDHARY","father":"SAGAR CHOUDHARY","mother":"MAMTA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10143,"roll_code":25033,"name":"PAPPU KUMAR MAHATO","father":"SANTOSH MAHATO","mother":"LAXMI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10121,"roll_code":25033,"name":"PAYAL KUMARI","father":"SUBAL KARMAKAR","mother":"KALAWATI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":35,"percentage":"88%","rank":6,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10142,"roll_code":25037,"name":"PINTU GORAIN","father":"MANIK GORAIN","mother":"LAXMI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10131,"roll_code":25037,"name":"PRADIP RAJWAR","father":"PRAKASH RAJWAR","mother":"ANITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":17,"percentage":"43%","rank":33,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10150,"roll_code":25033,"name":"PRATIMA KUMARI","father":"NEPAL MAHATO","mother":"SUNITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":35,"percentage":"88%","rank":6,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10114,"roll_code":25033,"name":"PRINCE KUMAR","father":"MANOJ KUMAR","mother":"LALITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":30,"percentage":"75%","rank":15,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10120,"roll_code":25033,"name":"PRIYANSHU KUMAR","father":"RAGHU NATH PRASAD","mother":"ROOBI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":27,"percentage":"68%","rank":24,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10148,"roll_code":25033,"name":"PRIYANSHU PANDEY","father":"RUPESH KUMAR PANDEY","mother":"ANUPAMA PANDEY","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10112,"roll_code":25033,"name":"PUJA KUMARI","father":"MIHIR GORAIN","mother":"MANJU DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":18,"percentage":"45%","rank":31,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10105,"roll_code":25033,"name":"RADHIKA KUMARI","father":"CHHOTAN SINGH","mother":"SUNITA SINGH","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":29,"percentage":"73%","rank":16,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10144,"roll_code":25033,"name":"RAHUL KUMAR MAHATO","father":"VINOD MAHATO","mother":"NILAM DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10103,"roll_code":25056,"name":"RAJIV SINGH","father":"PRAKASH SINGH","mother":"MEENA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":38,"percentage":"95%","rank":2,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10151,"roll_code":25033,"name":"RAJU KUMAR","father":"CHOTAN MAHATO","mother":"ARATI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":34,"percentage":"85%","rank":9,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10141,"roll_code":25037,"name":"RAJVIR GORAIN","father":"DHANANJAY GORAIN","mother":"REWATI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10118,"roll_code":25033,"name":"RINKI KUMARI","father":"SHANKAR KUMAR MAHATO","mother":"ANITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":17,"percentage":"43%","rank":33,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10136,"roll_code":25033,"name":"ROHIT GORAIN","father":"JITENDRA GORAIN","mother":"SARASWATI GORAIN","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10126,"roll_code":25033,"name":"ROHIT KUMAR GORAIN","father":"SUDHIR GORIAN","mother":"ALOMANI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":31,"percentage":"78%","rank":14,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10128,"roll_code":25030,"name":"RUPA KUMARI","father":"DHANU MAHATO","mother":"MAMTA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10147,"roll_code":25033,"name":"SAURAV MAJHI","father":"TRILOCHAN MAJHI","mother":"PUSHPA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":23,"percentage":"58%","rank":27,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":230,"roll_code":25033,"name":"SHIVSHANKAR KUMAR","father":"MANOJ KUMAR MAHATO","mother":"SHAKUNTALA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":36,"percentage":"90%","rank":5,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10101,"roll_code":25056,"name":"SHUBHAM SINGH","father":"LAXMIKANT SINGH","mother":"CHAMPA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":25,"percentage":"63%","rank":25,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10119,"roll_code":25033,"name":"SUMIT KUMAR","father":"INDU SHEKHAR SHARMA","mother":"MANJU DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":13,"percentage":"33%","rank":38,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10146,"roll_code":25056,"name":"SUMIT KUMAR GOPE","father":"LALU GOPE","mother":"JANU DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":237,"roll_code":25033,"name":"USHA KUMARI JHA","father":"VISHWAJIT OJHA","mother":"SUNITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":28,"percentage":"70%","rank":20,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10117,"roll_code":25033,"name":"VIJAY SINGH CHOUDHARY","father":"ANIL SINGH CHOUDHARY","mother":"RASMANI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":22,"percentage":"55%","rank":28,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10115,"roll_code":25033,"name":"VIVEK KUMAR","father":"ASHOK KUMAR MAHTO","mother":"ANJU DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10130,"roll_code":25033,"name":"VIVEK KUMAR MAHATO","father":"ANUJ KUMAR MAHATO","mother":"JURA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+{"roll_no":10127,"roll_code":25033,"name":"VIVEK SHARMA","father":"MAHAVIR SHARMA","mother":"SARITA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":37,"percentage":"93%","rank":3,"remarks":"good","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10153,"roll_code":25033,"name":"RANI KUMARI","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10154,"roll_code":25033,"name":"AMRITA KUMARI","father":"ASHOK SINGH","mother":"BIJALI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":20,"percentage":"50%","rank":30,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10155,"roll_code":25033,"name":"LAXMI","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10156,"roll_code":25033,"name":"KARAN GORAIN","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10157,"roll_code":25033,"name":"SONI KUMARI","father":"NIMAI GOPE","mother":"FULKUMARI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10158,"roll_code":25033,"name":"KHUSHI GUPTA","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10159,"roll_code":25033,"name":"PRIYANKA KUMARI","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10160,"roll_code":25033,"name":"BEAUTI KUMARI","father":"RAGHU NANDAN RAY","mother":"GAYTRI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":11,"percentage":"28%","rank":39,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10161,"roll_code":25033,"name":"ALOK KUMAR YADAV","father":"PRAKASH PRASHAD YADAV","mother":"MANNI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":7,"percentage":"18%","rank":43,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10162,"roll_code":25033,"name":"URMILA KUMARI","father":"SHIVLAL BHAGAT","mother":"SUSHMA DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":3,"percentage":"8%","rank":45,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10163,"roll_code":25033,"name":"SHOURAV GOPE","father":"DHANANJAY GOPE","mother":"MADHURI DEVI","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":22,"percentage":"55%","rank":28,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10170,"roll_code":25033,"name":"ADITYA CHOUDHARY","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":0,"percentage":"0%","rank":46,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10171,"roll_code":25033,"name":"DHIRAJ KUMAR","father":"","mother":"","test_name":"4th Test Class 12","total_marks":40,"marks_obtained":18,"percentage":"45%","rank":31,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+
+{"roll_no":10164,"roll_code":25033,"name":"RAM MUNDA","father":"","mother":"","test_name":"5th Test Class 12","total_marks":40,"marks_obtained":4,"percentage":"10%","rank":44,"remarks":"try harder","date":"17-05-2026","place":"Bokaro"},
+];
+
+    function searchResult() {
+      const rollNo = document.getElementById('rollNo').value.trim();
+      const rollCode = document.getElementById('rollCode').value.trim();
+      const student = students.find(s => String(s.roll_no) === rollNo && String(s.roll_code) === rollCode);
+
+      if (!student) {
+        alert('No matching record found. Please check Roll No and Roll Code.');
+        document.getElementById('resultCard').style.display = 'none';
+        return;
+      }
+
+      document.getElementById('name').textContent = student.name;
+      document.getElementById('father').textContent = student.father;
+      document.getElementById('mother').textContent = student.mother;
+      document.getElementById('rno').textContent = student.roll_no;
+      document.getElementById('rcode').textContent = student.roll_code;
+      document.getElementById('testname').textContent = student.test_name;
+      document.getElementById('totalmarks').textContent = student.total_marks;
+      document.getElementById('marks').textContent = student.marks_obtained;
+      document.getElementById('percent').textContent = student.percentage;
+      document.getElementById('rank').textContent = student.rank;
+      document.getElementById('remarks').textContent = student.remarks;
+      document.getElementById('date').textContent = student.date;
+      document.getElementById('place').textContent = student.place;
+
+      document.getElementById('resultCard').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
